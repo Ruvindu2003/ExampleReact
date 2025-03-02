@@ -1,14 +1,15 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
-const AddStudent = () => {
-  const navigate = useNavigate(); // Fixed useNavigate issue
+const Editstudent = () => {
+  const navigate = useNavigate();
 
+  const [searchId, setSearchId] = useState("");
   const [student, setStudent] = useState({
-    name: "",  
-    adrees: "", 
-    age: "", 
+    name: "",
+    adrees: "",
+    age: "",
     gender: "",
   });
 
@@ -16,26 +17,75 @@ const AddStudent = () => {
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
 
+  const handleSearch = async () => {
+    if (!searchId) {
+      alert("Please enter a student ID to search.");
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/student/Search-by-id/${searchId}`
+      );
+      const studentData = response.data;
+      setStudent({
+        name: studentData.name,
+        adrees: studentData.adrees,
+        age: studentData.age,
+        gender: studentData.gender,
+      });
+      alert("Student found!");
+    } catch (error) {
+      console.error("Error searching for student:", error);
+      alert("Student not found!");
+    }
+  };
+
   const saveStudent = async (e) => {
     e.preventDefault();
     console.log("Student Data:", student);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/student/add-student",
-        { ...student, age: parseInt(student.age) || 0 } 
+      const response = await axios.put(
+        "http://localhost:8080/student/Update-Student",
+        { ...student, age: parseInt(student.age) || 0 }
       );
       console.log("Response:", response.data);
-      alert("Student added successfully!");
-      navigate("/view-student"); 
+      alert("Student updated successfully!");
+      navigate("/view-student");
     } catch (error) {
-      console.error("Error adding student:", error);
-      alert("Error adding student!");
+      console.error("Error updating student:", error);
+      alert("Error updating student!");
     }
   };
 
   return (
     <div className="col-sm-8 py-2 px-5">
+      <h2>Edit Student</h2>
+
+      
+      <div className="input-group mb-5">
+        <label className="input-group-text" htmlFor="searchId">
+          Search by ID
+        </label>
+        <input
+          className="form-control col-sm-6"
+          type="text"
+          name="searchId"
+          id="searchId"
+          value={searchId}
+          onChange={(e) => setSearchId(e.target.value)}
+        />
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+      </div>
+
+      {}
       <form onSubmit={saveStudent}>
         <div className="input-group mb-5">
           <label className="input-group-text" htmlFor="name">
@@ -59,7 +109,7 @@ const AddStudent = () => {
           <input
             className="form-control col-sm-6"
             type="text"
-            name="adrees" // Fixed typo
+            name="adrees"
             id="adrees"
             required
             value={student.adrees}
@@ -78,7 +128,9 @@ const AddStudent = () => {
             id="age"
             required
             value={student.age}
-            onChange={(e) => setStudent({ ...student, age: parseInt(e.target.value) || "" })}
+            onChange={(e) =>
+              setStudent({ ...student, age: parseInt(e.target.value) || "" })
+            }
           />
         </div>
 
@@ -102,7 +154,7 @@ const AddStudent = () => {
 
         <div className="col-sm-2">
           <button type="submit" className="btn btn-outline-success btn-lg">
-            Save
+           Edit Student
           </button>
         </div>
       </form>
@@ -116,4 +168,4 @@ const AddStudent = () => {
   );
 };
 
-export default AddStudent;
+export default Editstudent;

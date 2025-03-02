@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { BrowserRouter as Router,Routes,Route } from "react-router";
 import Navbar from "./component/common/Navbar";
 import AddStudent from "./component/Student/AddStudent";
+import Editstudent from "./component/Student/Editstudent";
 
 
 function App(){
@@ -16,13 +17,10 @@ function App(){
     <Navbar></Navbar>
     <Routes>
 
-    <Route exact path="/"element={<Home></Home>}>
- </Route>
-
- <Route  exact path="/View-student"element={<StudentView></StudentView>}></Route>
-
-
-
+    <Route exact path="/"element={<Home></Home>}></Route>
+  <Route  exact path="/View-student"element={<StudentView></StudentView>}></Route>
+  <Route exact path="/Add-student"element={<AddStudent></AddStudent>}></Route>
+  <Route exact path="/Edit-student"element={<Editstudent></Editstudent>}></Route>
 
     </Routes>
 

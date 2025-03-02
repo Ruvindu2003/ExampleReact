@@ -13,7 +13,8 @@ function Navbar() {
       <div className="navbar-nav">
         <Link className="nav-link active" aria-current="page" to="/Homepage">Home</Link>
         <Link className="nav-link" to="/View-student">View Student</Link>
-        <Link className="nav-link" href="/Add-student">Add New Student</Link>
+        <Link className="nav-link" to="/Add-student">Add New Student</Link>
+        <Link className="nav-Linl"to="/Edit-student">Edit Student</Link>
       </div>
     </div>
   </div>
