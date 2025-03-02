@@ -1,0 +1,39 @@
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff !important;
+  }
+  
+  .navbar-brand:hover {
+    color: #f8f9fa !important;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+    color: #ffffff !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #f8f9fa !important;
+    text-decoration: underline;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    color: #f8f9fa !important;
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }

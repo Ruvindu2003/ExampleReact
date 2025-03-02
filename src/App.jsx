@@ -1,17 +1,17 @@
-import StudentView from "./component/Student/StudentView"
+import StudentView from "./component/Student/ViewStudent/StudentView"
 import Home from "./Home"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { BrowserRouter as Router,Routes,Route } from "react-router";
 import Navbar from "./component/common/Navbar";
-import AddStudent from "./component/Student/AddStudent";
-import Editstudent from "./component/Student/Editstudent";
+import AddStudent from "./component/Student/AddStudent/AddStudent";
+import Editstudent from "./component/Student/EditStudent/Editstudent";
 
 
 function App(){
  
   return <div className="App">
-    <h2>Well come For Student Mangement</h2>
+   
    
    <Router>
     <Navbar></Navbar>

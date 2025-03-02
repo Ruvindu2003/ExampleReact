@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./AddStudent.css"; 
 
 const AddStudent = () => {
   const navigate = useNavigate(); // Fixed useNavigate issue
@@ -19,6 +20,7 @@ const AddStudent = () => {
   const saveStudent = async (e) => {
     e.preventDefault();
     console.log("Student Data:", student);
+    
 
     try {
       const response = await axios.post(
@@ -35,10 +37,13 @@ const AddStudent = () => {
   };
 
   return (
+    
     <div className="col-sm-8 py-2 px-5">
+      <h1>Add Student</h1>
       <form onSubmit={saveStudent}>
         <div className="input-group mb-5">
           <label className="input-group-text" htmlFor="name">
+           
             Name
           </label>
           <input
